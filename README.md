@@ -33,7 +33,7 @@ Record data sources, date ranges, preprocessing, split boundaries, model setting
 
 ## Getting started
 
-The expected implementation stack is Python, PyTorch, and Qlib. Dependencies, supported versions, dataset setup, and training commands are still to be defined. There is no runnable training or evaluation workflow yet.
+The expected implementation stack is Python, PyTorch, and Qlib. The project training implementation and validated dependency manifest are still to be introduced. See [David’s staged experiment plan](david/plan.md) and [NVIDIA GPU setup guide](david/remote_computing_instructions.md) for the proposed sequence, Google Cloud billing/SSH/venv setup, and copyable bounded smoke checks. These examples have not been executed on a GPU; there is no validated end-to-end experiment workflow yet.
 
 Next steps:
 
@@ -41,8 +41,8 @@ Next steps:
 - [ ] Add and document the baseline implementation and its provenance.
 - [ ] Prepare CSI300 and CSI800 data and chronological splits.
 - [ ] Reproduce the dense baseline.
-- [ ] Add sparse attention variants and the random-neighbor control.
-- [ ] Prepare the Yahoo Finance S&P 500 pipeline.
+- [ ] Prove the Yahoo Finance S&P 500 pipeline at reduced width, then establish its full-width dense baseline.
+- [ ] After dense Chinese and U.S. baselines, add sparse attention variants and the random-neighbor control.
 - [ ] Run repeated-seed evaluations and summarize results.
 
 ## File inventory
@@ -53,6 +53,8 @@ Keep this inventory current whenever project files are added, renamed, removed, 
 | --- | --- |
 | [README.md](README.md) | Project overview, scope, setup status, evaluation plan, and maintained file inventory. |
 | [AGENTS.md](AGENTS.md) | Instructions for coding agents, including documentation and experiment practices. |
+| [david/plan.md](david/plan.md) | Staged plan for reduced-width and reference-size dense Chinese/U.S. baselines before attention changes, with data contracts and experiment gates. |
+| [david/remote_computing_instructions.md](david/remote_computing_instructions.md) | Google Cloud billing, GPU VM, SSH, venv, bounded MASTER smoke-test examples, troubleshooting, and shutdown instructions; GPU execution remains unverified. |
 | [original_paper.pdf](original_paper/original_paper.pdf) | Reference paper: MASTER: Market-Guided Stock Transformer for Stock Price Forecasting, the baseline this project extends. |
 | [original_paper/MASTER/](original_paper/MASTER/) | Independent clone of the authors’ official repository; includes model code, data documentation, supplied checkpoints, Qlib integration, and supplementary materials. See its README for the upstream file details. |
 | [project_proposal.pdf](project_proposal.pdf) | Proposal submitted to the professor; describes the planned sparse-attention extensions, datasets, comparisons, and metrics. |
