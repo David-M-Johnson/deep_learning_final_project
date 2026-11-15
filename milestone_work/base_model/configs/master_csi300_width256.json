@@ -1,0 +1,13 @@
+{
+  "title": "Dense MASTER \u2014 CSI300 \u2014 hidden width 256",
+  "universe": "csi300",
+  "width": 256,
+  "data_version": "opensource",
+  "epochs": 40,
+  "lr": 1e-05,
+  "threshold": 0.95,
+  "seeds": [
+    0
+  ],
+  "device": "cpu"
+}

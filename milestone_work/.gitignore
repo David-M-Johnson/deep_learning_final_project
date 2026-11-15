@@ -1,0 +1,10 @@
+.venv/
+**/__pycache__/
+*.pyc
+**/.cache/
+data/*
+!data/README.md
+base_model/runs/
+base_model/saved_runs/
+base_model/figures/*
+!base_model/figures/README.md
