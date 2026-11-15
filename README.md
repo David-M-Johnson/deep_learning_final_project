@@ -6,6 +6,14 @@ Deep learning course project extending **MASTER: Market-Guided Stock Transformer
 
 **Status:** Project setup and documentation. The authors’ reference code is cloned under `original_paper/MASTER/`. Project-specific model changes, data pipelines, and experiments have not been added yet.
 
+
+## Dataset ##
+
+The dataset can be found here: 
+
+https://drive.google.com/drive/folders/1OOhNVL5lI18RNKHYUv8k4Hvl1f0J3NCX?usp=share_link
+
+
 ## Project goal
 
 MASTER uses market-guided feature selection and alternates intra-stock and inter-stock attention to forecast stock returns. Our project investigates whether limiting inter-stock attention to a small set of relevant neighbors improves forecasting performance.
