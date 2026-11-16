@@ -1,116 +1,102 @@
-# Improving Transformer Models for Forecasting
+# MASTER milestone work
 
-Deep learning course project extending **MASTER: Market-Guided Stock Transformer for Stock Price Forecasting** with sparse inter-stock attention.
+This project explores **sparse inter-stock attention and potentially other
+modifications** to MASTER for stock-return forecasting. It builds on Li et al.,
+[*MASTER: Market-Guided Stock Transformer for Stock Price Forecasting*](original_paper/original_paper.pdf),
+AAAI 2024. The milestone includes dense models at widths **64, 128, and 256**,
+each trained with three seeds, and a matched test comparison against the
+authors' supplied width-256 model.
 
-**Team:** Brian Yin, David Johnson, and Marvin Widjaja.
+## Dataset
 
-**Status:** Local dense/top-k MASTER implementation and bounded benchmark runner are available. Twelve correctness tests pass, and synthetic CPU/MPS throughput checks have run. A bounded 100-date original CSI300 training-throughput check has run; open-source CSI300 splits have now been extracted and seed-0 top-10 and top-50 runs completed; no improvement over a matched dense baseline has been established. The authors’ reference code remains unchanged under `original_paper/MASTER/`.
+We use the authors' renewed Chinese **CSI300/CSI800** dataset. The completed
+milestone experiments use **CSI300**: training spans 2008–March 2020,
+validation April–June 2020, and testing July 2020–December 2022. Boundary
+exclusions and preprocessing are documented in the [data audit](milestone_work/verified_reproduction/reports/AUDIT.md).
 
+Local files live in `milestone_work/data/opensource/`, named
+`{csi300,csi800}_dl_{train,valid,test}.pkl`. Data and model checkpoints are
+Git-ignored and are not included in a fresh clone. See
+[download instructions and provenance](milestone_work/data/README.md).
 
-## Dataset ##
+## Project Goal
 
-The dataset can be found here: 
+Establish a reproducible dense MASTER baseline, then investigate whether sparse
+attention or other model changes improve forecasting quality or computational
+efficiency. Compare methods using consistent data, tuning budgets, seeds and
+evaluation rules. The separate [top-k experiments](<top k/README.md>) explore
+restricting attention to selected neighbors; correlation-based and random-neighbor
+controls remain planned. No sparse-attention improvement over a matched dense
+baseline has been established.
 
-https://drive.google.com/drive/folders/1OOhNVL5lI18RNKHYUv8k4Hvl1f0J3NCX?usp=share_link
+## Evaluation Plan
 
+Use chronological train/validation/test splits and report variation across seeds.
+Choose checkpoints before test evaluation and distinguish validation-selected
+scores from held-out test results.
 
-## Project goal
-
-MASTER uses market-guided feature selection and alternates intra-stock and inter-stock attention to forecast stock returns. Our project investigates whether limiting inter-stock attention to a small set of relevant neighbors improves forecasting performance.
-
-The submitted [project proposal](project_proposal.pdf) defines the planned scope:
-
-1. Reproduce the original dense-attention MASTER baseline on CSI300 and CSI800.
-2. Implement sparse inter-stock attention using either the top-k attention scores or neighbors selected by stock correlations over the past 60 days.
-3. Compare these methods with dense attention and a control using k randomly selected stocks.
-4. Build a data pipeline for S&P 500 stocks from Yahoo Finance and evaluate the methods on that market as well.
-
-Sparse attention is a hypothesis to test; no improvements have been demonstrated in this repository yet.
-
-## Evaluation plan
-
-Evaluate across several random seeds using the same data splits and evaluation settings for each method:
-
-| Category | Metrics |
+| Metric | Meaning |
 | --- | --- |
-| Prediction quality | IC and RankIC |
-| Prediction stability | ICIR and RankICIR |
-| Portfolio performance | Annualized excess return and information ratio from Qlib backtests |
+| **IC** | Daily Pearson correlation between predicted scores and realized returns across stocks, averaged over dates. Higher positive values are better. |
+| **RankIC** | Daily Spearman correlation between predicted and realized stock rankings, averaged over dates. Higher positive values are better. |
+| **ICIR / RankICIR** | Mean daily correlation divided by its daily standard deviation; measures signal strength relative to variability. Our implementation does not annualize these ratios. |
+| **MSE** | Mean squared error against standardized return targets; the training objective. Lower is better. |
+| **Annualized excess return / portfolio IR** | Return above a benchmark and its risk-adjusted consistency. These require a separate backtest with explicit trading costs and portfolio rules and are not implemented in the milestone evaluation. |
 
-Record data sources, date ranges, preprocessing, split boundaries, model settings, neighbor-selection rules, k values, seeds, and backtest assumptions alongside each experiment. Compute correlation-based neighbors from information available at prediction time to prevent future-data leakage.
+Correlation scores are **not accuracy percentages or investment returns**.
+The matched public-release evaluation shows close agreement with the supplied
+reference model; exact workbook values and original proprietary-data results
+have not been fully reproduced. See the [results overview](milestone_work/verified_reproduction/reports/RESULTS_OVERVIEW.md)
+and [matched test results](milestone_work/verified_reproduction/reports/PUBLIC_RELEASE_TEST_RESULTS.md).
 
-## Getting started
+## Reproduction Code and Training
 
-The implementation uses Python and PyTorch, with Qlib additionally required to load the authors’ dataset pickles. See [local attention implementation and benchmark instructions](<top k/docs/attention_benchmarks.md>). `top k/src/train.py` trains dense or top-k MASTER on the open-source CSI300 splits; `top k/src/benchmark.py` performs bounded throughput checks only. See [CSI300 training protocol](<top k/docs/csi300_training.md>). See [David’s staged experiment plan](david/plan.md) and [NVIDIA GPU setup guide](david/remote_computing_instructions.md) for the proposed sequence, Google Cloud billing/SSH/venv setup, and copyable bounded smoke checks. These examples have not been executed on a GPU; there is no validated end-to-end experiment workflow yet.
+The training code used for the verified study is
+[milestone_work/verified_reproduction/train.py](milestone_work/verified_reproduction/train.py).
+The architecture is in [vendor/master.py](milestone_work/verified_reproduction/vendor/master.py).
+Use Python 3.11 and follow the [environment instructions](milestone_work/verified_reproduction/README.md#setup-and-commands)
+before running these commands from the repository root:
 
-Next steps:
+```bash
+cd milestone_work/verified_reproduction
 
-- [ ] Establish the environment and dependency manifest.
-- [ ] Add and document the baseline implementation and its provenance.
-- [ ] Prepare CSI300 and CSI800 data and chronological splits.
-- [ ] Reproduce the dense baseline.
-- [ ] Prove the Yahoo Finance S&P 500 pipeline at reduced width, then establish its full-width dense baseline.
-- [ ] After dense Chinese and U.S. baselines, add sparse attention variants and the random-neighbor control.
-- [ ] Run repeated-seed evaluations and summarize results.
+# Short workflow check.
+../.venv/bin/python train.py --width 64 --max-dates 5 --epochs 1 --output runs/new-smoke
 
-## File inventory
+# Full CSI300 training with three seeds.
+../.venv/bin/python train.py --width 128 --seeds 0 1 2 --output runs/new-width128
+```
 
-Keep this inventory current whenever project files are added, renamed, removed, or change purpose. List individual source and documentation files; group generated outputs or large data collections by directory and explain their contents. Git internals are excluded.
+Choose width **64**, **128**, or **256** and a new output directory. Defaults are
+CPU, learning rate `1e-5`, dropout `0.5`, and at most 40 epochs, stopping earlier
+at training MSE `0.95`. Use `--device mps` for a supported Mac GPU or
+`--device cuda` for an NVIDIA GPU.
 
-| Path | Purpose |
-| --- | --- |
-| [README.md](README.md) | Project overview, scope, setup status, evaluation plan, and maintained file inventory. |
-| [src/__init__.py](src/__init__.py) | Project Python package marker. |
-| [src/model.py](src/model.py) | Attributed MASTER implementation with dense or top-k stock attention; k=10 and k=50 are benchmarked. |
-| [top k/](<top k/README.md>) | Self-contained top-k implementation, tests, dependency files, experiment documentation, and results summary; see its maintained file inventory. |
-| [.gitmodules](.gitmodules) | Configures the pinned upstream MASTER checkout for recursive clone/submodule initialization. |
-| [milestone_work/](milestone_work/README.md) | Teammate dense reproduction implementation and milestone documentation, maintained separately from top-k experiments. |
-| [.gitignore](.gitignore) | Excludes shared environments/data, caches, and generated run artifacts. |
-| `data/` (ignored) | Shared original and open-source CSI300 dataset samplers extracted from supplied archives. |
-| [AGENTS.md](AGENTS.md) | Instructions for coding agents, including documentation and experiment practices. |
-| [david/plan.md](david/plan.md) | Staged plan for reduced-width and reference-size dense Chinese/U.S. baselines before attention changes, with data contracts and experiment gates. |
-| [david/remote_computing_instructions.md](david/remote_computing_instructions.md) | Google Cloud billing, GPU VM, SSH, venv, bounded MASTER smoke-test examples, troubleshooting, and shutdown instructions; GPU execution remains unverified. |
-| [original_paper.pdf](original_paper/original_paper.pdf) | Reference paper: MASTER: Market-Guided Stock Transformer for Stock Price Forecasting, the baseline this project extends. |
-| [original_paper/MASTER/](original_paper/MASTER/) | Independent clone of the authors’ official repository; includes model code, data documentation, supplied checkpoints, Qlib integration, and supplementary materials. See its README for the upstream file details. |
-| [project_proposal.pdf](project_proposal.pdf) | Proposal submitted to the professor; describes the planned sparse-attention extensions, datasets, comparisons, and metrics. |
+Completed checkpoints and histories are stored locally under
+`milestone_work/verified_reproduction/runs/controlled/width{64,128,256}-seed{0,1,2}/`.
+The three-width validation comparison uses `best_validation.pt`; the matched
+width-256 test comparison uses `threshold_selected.pt`. The shared test-evaluation
+code is [paired_test_eval.py](milestone_work/verified_reproduction/paired_test_eval.py).
+See the [implementation README](milestone_work/verified_reproduction/README.md)
+for protocol details and the maintained source-file inventory.
+
+## Milestone Figures
+
+The two report figures and their builder live in
+[milestone_work/milestone_figures/](milestone_work/milestone_figures/README.md):
+
+- [Three-seed validation comparison](milestone_work/milestone_figures/01_three_seed_validation.png)
+- [Matched width-256 test comparison](milestone_work/milestone_figures/02_matched_test_reproduction.png)
+
+Regenerate them from the locally copied completed-study results, from the
+repository root:
+
+```bash
+milestone_work/.venv/bin/python milestone_work/milestone_figures/make_figures.py
+```
 
 ## References
 
-- Tong Li, Zhaoyang Liu, Yanyan Shen, Xue Wang, Haokun Chen, and Sen Huang. *MASTER: Market-Guided Stock Transformer for Stock Price Forecasting*. AAAI 2024. Local copy: [original_paper.pdf](original_paper/original_paper.pdf). Paper identifier: arXiv:2312.15235.
+- Tong Li et al. *MASTER: Market-Guided Stock Transformer for Stock Price Forecasting*. AAAI 2024, 38(1), 162–170. [Local paper](original_paper/original_paper.pdf); [arXiv:2312.15235](https://arxiv.org/abs/2312.15235).
+- [Official MASTER implementation](https://github.com/SJTU-DMTai/MASTER), revision `de8f58557096abde4216a701b35fc4368158d111`, under the [MIT license](milestone_work/verified_reproduction/vendor/LICENSE). The [local reference checkout](original_paper/MASTER/README.md) is read-only source material.
 - [Submitted project proposal](project_proposal.pdf).
-
-## Reference code provenance
-
-- Source: [SJTU-DMTai/MASTER](https://github.com/SJTU-DMTai/MASTER).
-- Local location: `original_paper/MASTER/` (an independent Git clone).
-- Revision cloned: `de8f58557096abde4216a701b35fc4368158d111`.
-- License: [MIT](original_paper/MASTER/LICENSE); retain the upstream license when reusing code.
-- Associated paper: MASTER, cited above. The public repository provides core code and processed data; the authors’ complete internal experiment codebase is confidential.
-
-To recreate the reference checkout:
-
-```bash
-git clone https://github.com/SJTU-DMTai/MASTER.git original_paper/MASTER
-git -C original_paper/MASTER checkout de8f58557096abde4216a701b35fc4368158d111
-```
-
-## Results
-
-Correctness checks and synthetic training-throughput measurements are recorded in [attention benchmarks](<top k/docs/attention_benchmarks.md>). A 100-date CSI300 training-throughput check is also recorded there. Completed top-10/top-50 single-seed forecasting results are in [top-k results](<top k/results.csv>). Portfolio results and a matched dense comparison remain outstanding.
-
-## Run the top-k correctness tests
-
-See [top-k setup](<top k/README.md>) for fresh-clone and Windows instructions.
-On macOS/Linux with Python 3.11, from the repository root:
-
-```bash
-git submodule update --init original_paper/MASTER
-python3.11 -m venv .venv
-.venv/bin/python -m pip install -r "top k/requirements.txt"
-cd "top k"
-../.venv/bin/python -m pytest -q
-```
-
-These 12 checks need no downloaded datasets. Full financial training requires the
-separate CSI300 pickle files and optional Qlib dependencies. Generated checkpoints
-and datasets are not committed.
