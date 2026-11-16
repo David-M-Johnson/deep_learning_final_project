@@ -1,0 +1,3 @@
+[submodule "original_paper/MASTER"]
+	path = original_paper/MASTER
+	url = https://github.com/SJTU-DMTai/MASTER.git

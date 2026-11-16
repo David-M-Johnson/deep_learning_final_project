@@ -4,7 +4,7 @@ Deep learning course project extending **MASTER: Market-Guided Stock Transformer
 
 **Team:** Brian Yin, David Johnson, and Marvin Widjaja.
 
-**Status:** Project setup and documentation. The authors’ reference code is cloned under `original_paper/MASTER/`. Project-specific model changes, data pipelines, and experiments have not been added yet.
+**Status:** Local dense/top-k MASTER implementation and bounded benchmark runner are available. Twelve correctness tests pass, and synthetic CPU/MPS throughput checks have run. A bounded 100-date original CSI300 training-throughput check has run; open-source CSI300 splits have now been extracted and seed-0 top-10 and top-50 runs completed; no improvement over a matched dense baseline has been established. The authors’ reference code remains unchanged under `original_paper/MASTER/`.
 
 
 ## Dataset ##
@@ -41,7 +41,7 @@ Record data sources, date ranges, preprocessing, split boundaries, model setting
 
 ## Getting started
 
-The expected implementation stack is Python, PyTorch, and Qlib. The project training implementation and validated dependency manifest are still to be introduced. See [David’s staged experiment plan](david/plan.md) and [NVIDIA GPU setup guide](david/remote_computing_instructions.md) for the proposed sequence, Google Cloud billing/SSH/venv setup, and copyable bounded smoke checks. These examples have not been executed on a GPU; there is no validated end-to-end experiment workflow yet.
+The implementation uses Python and PyTorch, with Qlib additionally required to load the authors’ dataset pickles. See [local attention implementation and benchmark instructions](<top k/docs/attention_benchmarks.md>). `top k/src/train.py` trains dense or top-k MASTER on the open-source CSI300 splits; `top k/src/benchmark.py` performs bounded throughput checks only. See [CSI300 training protocol](<top k/docs/csi300_training.md>). See [David’s staged experiment plan](david/plan.md) and [NVIDIA GPU setup guide](david/remote_computing_instructions.md) for the proposed sequence, Google Cloud billing/SSH/venv setup, and copyable bounded smoke checks. These examples have not been executed on a GPU; there is no validated end-to-end experiment workflow yet.
 
 Next steps:
 
@@ -60,6 +60,13 @@ Keep this inventory current whenever project files are added, renamed, removed, 
 | Path | Purpose |
 | --- | --- |
 | [README.md](README.md) | Project overview, scope, setup status, evaluation plan, and maintained file inventory. |
+| [src/__init__.py](src/__init__.py) | Project Python package marker. |
+| [src/model.py](src/model.py) | Attributed MASTER implementation with dense or top-k stock attention; k=10 and k=50 are benchmarked. |
+| [top k/](<top k/README.md>) | Self-contained top-k implementation, tests, dependency files, experiment documentation, and results summary; see its maintained file inventory. |
+| [.gitmodules](.gitmodules) | Configures the pinned upstream MASTER checkout for recursive clone/submodule initialization. |
+| [milestone_work/](milestone_work/README.md) | Teammate dense reproduction implementation and milestone documentation, maintained separately from top-k experiments. |
+| [.gitignore](.gitignore) | Excludes shared environments/data, caches, and generated run artifacts. |
+| `data/` (ignored) | Shared original and open-source CSI300 dataset samplers extracted from supplied archives. |
 | [AGENTS.md](AGENTS.md) | Instructions for coding agents, including documentation and experiment practices. |
 | [david/plan.md](david/plan.md) | Staged plan for reduced-width and reference-size dense Chinese/U.S. baselines before attention changes, with data contracts and experiment gates. |
 | [david/remote_computing_instructions.md](david/remote_computing_instructions.md) | Google Cloud billing, GPU VM, SSH, venv, bounded MASTER smoke-test examples, troubleshooting, and shutdown instructions; GPU execution remains unverified. |
@@ -89,4 +96,21 @@ git -C original_paper/MASTER checkout de8f58557096abde4216a701b35fc4368158d111
 
 ## Results
 
-No experiments have been run or results recorded yet. Add reproducible commands, configurations, and links to result artifacts here as they become available.
+Correctness checks and synthetic training-throughput measurements are recorded in [attention benchmarks](<top k/docs/attention_benchmarks.md>). A 100-date CSI300 training-throughput check is also recorded there. Completed top-10/top-50 single-seed forecasting results are in [top-k results](<top k/results.csv>). Portfolio results and a matched dense comparison remain outstanding.
+
+## Run the top-k correctness tests
+
+See [top-k setup](<top k/README.md>) for fresh-clone and Windows instructions.
+On macOS/Linux with Python 3.11, from the repository root:
+
+```bash
+git submodule update --init original_paper/MASTER
+python3.11 -m venv .venv
+.venv/bin/python -m pip install -r "top k/requirements.txt"
+cd "top k"
+../.venv/bin/python -m pytest -q
+```
+
+These 12 checks need no downloaded datasets. Full financial training requires the
+separate CSI300 pickle files and optional Qlib dependencies. Generated checkpoints
+and datasets are not committed.
