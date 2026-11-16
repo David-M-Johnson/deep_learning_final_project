@@ -62,3 +62,10 @@ environments are not copied. Files under this directory other than this README
 are ignored by Git; obtain them again with the documented downloader when
 cloning elsewhere. Code MIT licensing does not grant redistribution rights to
 financial data.
+
+## Verified milestone study
+
+All six files were rechecked against the completed sandbox study. The
+`verified_copy_manifest.json` records their SHA256 identities and sizes. The
+canonical `../verified_reproduction/` runner uses this directory directly;
+there is no duplicate dataset under the new code package.

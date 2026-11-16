@@ -1,0 +1,32 @@
+[
+  {
+    "source": "/Users/david/Desktop/deep_learning_proj/milestone_work/base_model/train.py",
+    "sandbox_copy": "baseline_runner.py",
+    "sha256": "ac146c7562776c9a0c34112f2b4b4468daa0f904594b65605175299271ce30d7",
+    "match": true
+  },
+  {
+    "source": "/Users/david/Desktop/deep_learning_proj/original_paper/MASTER/master.py",
+    "sandbox_copy": "vendor/master.py",
+    "sha256": "e5e798952c9636c8c43fc91cff51a6dbbebc009b99d16a1ae090be32d0744fe4",
+    "match": true
+  },
+  {
+    "source": "/Users/david/Desktop/deep_learning_proj/original_paper/MASTER/base_model.py",
+    "sandbox_copy": "vendor/base_model.py",
+    "sha256": "116322431b83194234390a5929cd98883afb8fac2b1eaffb3d01556b9f5d691a",
+    "match": true
+  },
+  {
+    "source": "/Users/david/Desktop/deep_learning_proj/original_paper/original_paper.pdf",
+    "sandbox_copy": "reference/papers/original_paper.pdf",
+    "sha256": "7f535d61deffada8ae0c63577489d20d1c87a2044998321968d8b886375734ec",
+    "match": true
+  },
+  {
+    "source": "/Users/david/Desktop/deep_learning_proj/original_paper/MASTER/model/performance.xlsx",
+    "sandbox_copy": "reference/model/performance.xlsx",
+    "sha256": "5adf70750c5cb216c8210f9a8ca194877a87cd786bde50daacfbc20ef4d11426",
+    "match": true
+  }
+]

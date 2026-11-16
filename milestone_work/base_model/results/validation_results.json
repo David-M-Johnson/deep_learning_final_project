@@ -1,0 +1,82 @@
+{
+  "recorded_utc": "2026-11-16T01:43:03.986933+00:00",
+  "evaluation_split": "validation only; 54 dates in Q2 2020 after boundary purging",
+  "models": [
+    {
+      "width": 64,
+      "seed": 0,
+      "checkpoint_epoch": 35,
+      "completion_status": "completion unconfirmed; no completion summary",
+      "stopping_reason": null,
+      "checkpoint_sha256": "cafe1baa42bcdfd2d3a5d726488e21ff36cb20c101c625cc6be4c33cd1297959",
+      "final_training_mse": 0.9747101706631166,
+      "training_validation_elapsed_seconds": 3002.191419917159,
+      "final_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.06258761786273975,
+        "ICIR": 0.4924363334448876,
+        "RankIC": 0.07364998501174136,
+        "RankICIR": 0.6055153561542563
+      },
+      "best_observed_validation": {
+        "IC": {
+          "epoch": 6,
+          "value": 0.1072007426525451
+        },
+        "RankIC": {
+          "epoch": 6,
+          "value": 0.1121816822002438
+        },
+        "ICIR": {
+          "epoch": 6,
+          "value": 1.0668042682354144
+        },
+        "RankICIR": {
+          "epoch": 3,
+          "value": 1.0414546222013548
+        }
+      },
+      "best_checkpoint_retained": false,
+      "note": "Best observed metrics are history values; copied weights are the latest checkpoint, not best-epoch weights."
+    },
+    {
+      "width": 128,
+      "seed": 0,
+      "checkpoint_epoch": 40,
+      "completion_status": "finished",
+      "stopping_reason": "epoch_limit",
+      "checkpoint_sha256": "15c377c10a634812c21990d9c95c58b355d36ae499f6558b4fa4c2451437e9d9",
+      "final_training_mse": 0.9562964138763418,
+      "training_validation_elapsed_seconds": 5116.414876458235,
+      "final_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.04309804339906896,
+        "ICIR": 0.42485793005261324,
+        "RankIC": 0.05125383855387787,
+        "RankICIR": 0.5277142340771213
+      },
+      "best_observed_validation": {
+        "IC": {
+          "epoch": 6,
+          "value": 0.1148476513601137
+        },
+        "RankIC": {
+          "epoch": 6,
+          "value": 0.1174042429290815
+        },
+        "ICIR": {
+          "epoch": 3,
+          "value": 1.065103289604779
+        },
+        "RankICIR": {
+          "epoch": 3,
+          "value": 1.0114763974328171
+        }
+      },
+      "best_checkpoint_retained": false,
+      "note": "Best observed metrics are history values; copied weights are the latest checkpoint, not best-epoch weights."
+    }
+  ]
+}

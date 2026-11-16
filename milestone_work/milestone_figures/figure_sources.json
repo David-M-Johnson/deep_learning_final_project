@@ -1,0 +1,106 @@
+{
+  "font": "cmr10",
+  "font_file": "cmr10.ttf",
+  "dpi": 400,
+  "border_width_points": 0.75,
+  "seed_point_order": "left to right = seeds 0, 1, 2; horizontal line = arithmetic mean",
+  "source_files": {
+    "validation": {
+      "path": "verified_reproduction/outputs/sweep/comparison.json",
+      "sha256": "3c75ef71b453380157dad25b49152dcee16f5b10bb4638d28df759d9e2685a52"
+    },
+    "test": {
+      "path": "verified_reproduction/outputs/public_release_test/comparison.json",
+      "sha256": "fa40f94e485867308f264fa80bfcde9db23bba642505c524a39dec07d7dd5895"
+    }
+  },
+  "plotted_values": {
+    "validation": [
+      {
+        "width": 64,
+        "metric": "IC",
+        "seed_values": [
+          0.10721928875318804,
+          0.11204804511537188,
+          0.11723184616007094
+        ],
+        "mean": 0.11216639334287694
+      },
+      {
+        "width": 128,
+        "metric": "IC",
+        "seed_values": [
+          0.11480284389661966,
+          0.1115371236965604,
+          0.10580753422216446
+        ],
+        "mean": 0.11071583393844815
+      },
+      {
+        "width": 256,
+        "metric": "IC",
+        "seed_values": [
+          0.08788768229510868,
+          0.1201017649959981,
+          0.10053932919453148
+        ],
+        "mean": 0.10284292549521275
+      },
+      {
+        "width": 64,
+        "metric": "RankIC",
+        "seed_values": [
+          0.11220785840715149,
+          0.10951202246918168,
+          0.1136150898437266
+        ],
+        "mean": 0.11177832357335325
+      },
+      {
+        "width": 128,
+        "metric": "RankIC",
+        "seed_values": [
+          0.11735895731152243,
+          0.11612296771250355,
+          0.10443411023466916
+        ],
+        "mean": 0.11263867841956504
+      },
+      {
+        "width": 256,
+        "metric": "RankIC",
+        "seed_values": [
+          0.09408457163128647,
+          0.11663989453141026,
+          0.09998500518348076
+        ],
+        "mean": 0.10356982378205916
+      }
+    ],
+    "test": [
+      {
+        "metric": "IC",
+        "workbook_seed0": 0.0653331944250894,
+        "supplied_checkpoint": 0.06541624660987493,
+        "ours_seed_values": [
+          0.06000813027993296,
+          0.05549142507150817,
+          0.06828382263711531
+        ],
+        "ours_mean": 0.061261125996185474
+      },
+      {
+        "metric": "RankIC",
+        "workbook_seed0": 0.0689011156505423,
+        "supplied_checkpoint": 0.06910311101581165,
+        "ours_seed_values": [
+          0.0702050881775275,
+          0.0631947819350335,
+          0.07090349389749959
+        ],
+        "ours_mean": 0.06810112133668686
+      }
+    ]
+  },
+  "limits": "Validation-selected first figure; threshold-selected held-out test second figure. No test scores for widths64/128 are implied."
+}

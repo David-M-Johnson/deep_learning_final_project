@@ -1,0 +1,40 @@
+{
+  "synthetic": true,
+  "stocks": 300,
+  "steps": 8,
+  "timed_batches": 5,
+  "includes": "forward/backward/Adam, transfers, finite checks and clipping as in current runner",
+  "context": "existing CPU sweep continues concurrently; short warmup, not a full epoch speedup estimate",
+  "measurements": [
+    {
+      "width": 64,
+      "device": "cpu",
+      "seconds_per_daily_batch": 0.035054758191108704
+    },
+    {
+      "width": 64,
+      "device": "mps",
+      "seconds_per_daily_batch": 0.035808108188211916
+    },
+    {
+      "width": 128,
+      "device": "cpu",
+      "seconds_per_daily_batch": 0.046450966596603395
+    },
+    {
+      "width": 128,
+      "device": "mps",
+      "seconds_per_daily_batch": 0.034472483210265636
+    },
+    {
+      "width": 256,
+      "device": "cpu",
+      "seconds_per_daily_batch": 0.12091477504000067
+    },
+    {
+      "width": 256,
+      "device": "mps",
+      "seconds_per_daily_batch": 0.06566090816631913
+    }
+  ]
+}

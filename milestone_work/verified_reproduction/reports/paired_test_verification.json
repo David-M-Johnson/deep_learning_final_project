@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "model": "authors_opensource_seed0",
+      "same_population": true,
+      "metric_recomputation": true,
+      "sampled_prediction_max_error": 2.905502316519204e-08
+    },
+    {
+      "model": "ours_threshold_seed0",
+      "same_population": true,
+      "metric_recomputation": true,
+      "sampled_prediction_max_error": 2.9397583034551644e-08
+    },
+    {
+      "model": "ours_threshold_seed1",
+      "same_population": true,
+      "metric_recomputation": true,
+      "sampled_prediction_max_error": 2.605819704459833e-08
+    },
+    {
+      "model": "ours_threshold_seed2",
+      "same_population": true,
+      "metric_recomputation": true,
+      "sampled_prediction_max_error": 2.8476715097092153e-08
+    }
+  ],
+  "models": 4,
+  "dates": 611,
+  "inference_rows_per_model": 183300,
+  "scored_rows_per_model": 182995,
+  "frozen_input_hashes_match": true,
+  "training_protocol_unchanged": true,
+  "portfolio_evaluation": false
+}

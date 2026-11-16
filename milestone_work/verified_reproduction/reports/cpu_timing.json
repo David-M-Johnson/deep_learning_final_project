@@ -1,0 +1,44 @@
+[
+  {
+    "threads": 1,
+    "width": 64,
+    "training_dates": 20,
+    "seconds": 0.6224110829643905,
+    "rough_seconds_per_full_epoch": 92.55252803680487
+  },
+  {
+    "threads": 1,
+    "width": 128,
+    "training_dates": 20,
+    "seconds": 0.8315057908184826,
+    "rough_seconds_per_full_epoch": 123.64491109470838
+  },
+  {
+    "threads": 1,
+    "width": 256,
+    "training_dates": 20,
+    "seconds": 1.2914174171164632,
+    "rough_seconds_per_full_epoch": 192.03376992521808
+  },
+  {
+    "threads": 2,
+    "width": 64,
+    "training_dates": 20,
+    "seconds": 0.48103170841932297,
+    "rough_seconds_per_full_epoch": 71.52941504195333
+  },
+  {
+    "threads": 2,
+    "width": 128,
+    "training_dates": 20,
+    "seconds": 0.6492659579962492,
+    "rough_seconds_per_full_epoch": 96.54584795404226
+  },
+  {
+    "threads": 2,
+    "width": 256,
+    "training_dates": 20,
+    "seconds": 1.0344237918034196,
+    "rough_seconds_per_full_epoch": 153.8188178411685
+  }
+]

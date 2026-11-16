@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "two_real_epochs_exact_original_runner_weights_and_metrics": true,
+  "threshold_integration_stopped_epoch": 1,
+  "test_evaluation": false
+}

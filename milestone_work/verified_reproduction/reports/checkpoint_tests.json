@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "width": 64,
+      "last_epoch": 2,
+      "best_epoch": 1,
+      "threshold_epoch": 2,
+      "exact_reload": true
+    },
+    {
+      "width": 128,
+      "last_epoch": 2,
+      "best_epoch": 1,
+      "threshold_epoch": 2,
+      "exact_reload": true
+    },
+    {
+      "width": 256,
+      "last_epoch": 2,
+      "best_epoch": 1,
+      "threshold_epoch": 2,
+      "exact_reload": true
+    }
+  ]
+}

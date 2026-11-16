@@ -8,3 +8,7 @@ base_model/runs/
 base_model/saved_runs/
 base_model/figures/*
 !base_model/figures/README.md
+verified_reproduction/runs/
+verified_reproduction/outputs/
+verified_reproduction/reference/
+verified_reproduction/.tmp/

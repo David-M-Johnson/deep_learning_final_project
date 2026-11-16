@@ -1,0 +1,67 @@
+{
+  "task": "Fixed-checkpoint matched public-release test evaluation",
+  "test_file": "data/opensource/csi300_dl_test.pkl",
+  "test_start": "2020-07-01",
+  "test_end": "2022-12-31",
+  "output": "outputs/public_release_test",
+  "threads": 2,
+  "device": "cpu",
+  "width": 256,
+  "checkpoints": [
+    {
+      "label": "authors_opensource_seed0",
+      "kind": "upstream",
+      "seed": 0,
+      "path": "reference/model/csi300_opensource_0.pkl"
+    },
+    {
+      "label": "ours_threshold_seed0",
+      "kind": "local_threshold",
+      "seed": 0,
+      "path": "runs/controlled/width256-seed0/seed-0/threshold_selected.pt",
+      "epoch": 26
+    },
+    {
+      "label": "ours_threshold_seed1",
+      "kind": "local_threshold",
+      "seed": 1,
+      "path": "runs/controlled/width256-seed1/seed-1/threshold_selected.pt",
+      "epoch": 28
+    },
+    {
+      "label": "ours_threshold_seed2",
+      "kind": "local_threshold",
+      "seed": 2,
+      "path": "runs/controlled/width256-seed2/seed-2/threshold_selected.pt",
+      "epoch": 27
+    }
+  ],
+  "input_sha256": {
+    "data/opensource/csi300_dl_test.pkl": "d05194f2b8d0a1d94e79a13abc2702e1c16c9d8e514ead3ea1b41d4de07cfd95",
+    "reference/vendor/base_model.py": "116322431b83194234390a5929cd98883afb8fac2b1eaffb3d01556b9f5d691a",
+    "vendor/master.py": "e5e798952c9636c8c43fc91cff51a6dbbebc009b99d16a1ae090be32d0744fe4",
+    "vendor/base_model.py": "116322431b83194234390a5929cd98883afb8fac2b1eaffb3d01556b9f5d691a",
+    "baseline_runner.py": "ac146c7562776c9a0c34112f2b4b4468daa0f904594b65605175299271ce30d7",
+    "reference/model/performance.xlsx": "5adf70750c5cb216c8210f9a8ca194877a87cd786bde50daacfbc20ef4d11426",
+    "reference/model/csi300_opensource_0.pkl": "581443312928ac27fab1c94482cea9e3e0a250f50948fe17e88d8ab5fa188a59",
+    "runs/controlled/width256-seed0/seed-0/threshold_selected.pt": "74e0dceb821950ac108b8b3f447c186921f8fb67456e11bc8ce40a11e4ca5f08",
+    "runs/controlled/width256-seed1/seed-1/threshold_selected.pt": "0327d486cd19112eaa713fbc36edc7d340803f7d0cd60f15ec0d4df0a3311ebd",
+    "runs/controlled/width256-seed2/seed-2/threshold_selected.pt": "b55734086d2e8b9d232b6f430ff3f9e64a3d2b509eb86f4b669f994a0f5e3bbf"
+  },
+  "evaluation_code_sha256": "cace8332c8c25b0053924d36ada6ade45191dc71068a9f58a0d2016bcc623d8e",
+  "upstream_seed0_workbook_metrics": {
+    "IC": 0.0653331944250894,
+    "ICIR": 0.437737673269017,
+    "RankIC": 0.0689011156505423,
+    "RankICIR": 0.448122143526123
+  },
+  "benchmark_tolerances": {
+    "IC": 1e-05,
+    "RankIC": 1e-05,
+    "ICIR": 0.0001,
+    "RankICIR": 0.0001
+  },
+  "checkpoint_selection": "Author supplied seed0; ours pre-existing threshold_selected.pt for seeds0,1,2; no validation-best checkpoints",
+  "nan_policy": "Unchanged reference pandas pairwise correlations, np.mean and population np.std; no undefined date expected from label audit",
+  "authorization": "User explicitly approved this matched public-release evaluation; no training or hyperparameter selection."
+}

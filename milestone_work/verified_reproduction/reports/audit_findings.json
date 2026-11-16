@@ -1,0 +1,22 @@
+{
+  "confirmed": [
+    "221 inputs + 1 label, float32, lookback 8",
+    "market columns 158:221 shared within each date",
+    "input market gate active; CSI300 beta=5",
+    "historical indices sampled do not exceed prediction date",
+    "paper/YAML target close[t+5]/close[t+1]-1",
+    "boundary purge and context-date filtering recorded",
+    "no missing current labels in supplied inference samples"
+  ],
+  "not_independently_confirmable": [
+    "Alpha158 exact expression ordering: feature names absent from pickles",
+    "actual target arithmetic/alignment against raw close bars: raw prices absent",
+    "original median/MAD fit interval and missing-value transformation cannot be re-fitted from processed snapshots",
+    "missing inference stocks from upstream DropnaLabel cannot be restored without raw input universe/features"
+  ],
+  "validation_issue": "No missing labels in supplied validation. Consistent with documented DropnaLabel; cannot quantify omitted eligible stocks without raw universe. Do not claim repaired.",
+  "compatibility": "Old sampler objects retain unsliced context plus start_idx/end_idx. Qlib 0.9.7 get_index returns all data_index; explicit calendar filtering restores intended prediction segments.",
+  "benchmark": "Use Sheet1 B14:G20 for renewed CSI300, not B4:G10 (original training / renewed test). Benchmark is test, not our short validation.",
+  "feature_preprocessing_source": "Upstream README, not independently reconstructed",
+  "test_policy": "Only coverage/shape/label missingness audited; no model test predictions or IC computed."
+}

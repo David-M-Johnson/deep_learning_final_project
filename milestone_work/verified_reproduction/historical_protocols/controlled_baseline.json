@@ -1,0 +1,38 @@
+{
+  "widths": [
+    64,
+    128,
+    256
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "epochs": 40,
+  "lr": 1e-05,
+  "threshold": 0.95,
+  "dropout": 0.5,
+  "temporal_heads": 4,
+  "stock_heads": 2,
+  "gate_beta": 5,
+  "lookback": 8,
+  "selection": "greatest validation IC, earliest tie",
+  "device": "cpu",
+  "threads_per_job": 2,
+  "max_parallel_jobs": 2,
+  "data_sha256": {
+    "train": "3b2871a360c0957ec9759bd995ad26324592934c1e271e0798648c2017852714",
+    "valid": "7abd9b3ff8cc72400b6fcc4c9fa3875cfd2b644f3f1eb1089ed9e9d5eb15ea11"
+  },
+  "test_evaluation": false,
+  "code_sha256": {
+    "train.py": "d9e3ad3c403a46045bd64b98766fa60ec193c30ca9f75862d7a91bd2fe466d5f",
+    "baseline_runner.py": "ac146c7562776c9a0c34112f2b4b4468daa0f904594b65605175299271ce30d7",
+    "checkpointing.py": "120291adcc0519dc6601d881d1d199f1b2cfb69d428913ef366932baa3344246",
+    "vendor/master.py": "e5e798952c9636c8c43fc91cff51a6dbbebc009b99d16a1ae090be32d0744fe4",
+    "vendor/base_model.py": "116322431b83194234390a5929cd98883afb8fac2b1eaffb3d01556b9f5d691a",
+    "sweep.py": "35781fc4b704e5d2bcb655b169931d14c7a703a4d07c1db1281236265278d239"
+  },
+  "audit_acknowledgment": "Supplied processed data; feature expression order and raw target cannot independently be reconstructed; validation missing stocks cannot be restored."
+}

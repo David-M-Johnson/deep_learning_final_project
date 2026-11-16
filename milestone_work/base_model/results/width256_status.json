@@ -1,0 +1,19 @@
+{
+  "width": 256,
+  "source": "david/reproduction/runs/csi300-width256",
+  "latest_epoch": 26,
+  "completion_status": "finished",
+  "stopping_reason": "reference_train_loss_threshold",
+  "elapsed_seconds": 5033.983519000001,
+  "final_training_mse": 0.9490757010371074,
+  "final_validation": {
+    "dates": 54,
+    "undefined_dates": 0,
+    "IC": 0.018806001631145007,
+    "ICIR": 0.17662640228593948,
+    "RankIC": 0.03292924320239582,
+    "RankICIR": 0.2825254059515173
+  },
+  "milestone_checkpoint_epoch": 5,
+  "note": "Status report only; the width-256 milestone checkpoint has not been refreshed."
+}

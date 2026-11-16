@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "width": 64,
+      "date": "2008-01-02",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 292,
+      "stocks_after": 278,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 64,
+      "date": "2014-02-20",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 296,
+      "stocks_after": 282,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 64,
+      "date": "2020-03-24",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 299,
+      "stocks_after": 285,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 128,
+      "date": "2008-01-02",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 292,
+      "stocks_after": 278,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 128,
+      "date": "2014-02-20",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 296,
+      "stocks_after": 282,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 128,
+      "date": "2020-03-24",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 299,
+      "stocks_after": 285,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 256,
+      "date": "2008-01-02",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 292,
+      "stocks_after": 278,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 256,
+      "date": "2014-02-20",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 296,
+      "stocks_after": 282,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    },
+    {
+      "width": 256,
+      "date": "2020-03-24",
+      "raw_dtype": "torch.float32",
+      "stocks_before": 299,
+      "stocks_after": 285,
+      "label_max_diff": 0.0,
+      "prediction_max_diff": 0.0,
+      "loss_abs_diff": 0.0,
+      "raw_gradient_max_diff": 0.0,
+      "clipped_gradient_max_diff": 0.0,
+      "updated_parameter_max_diff": 0.0
+    }
+  ],
+  "tolerances": {
+    "prediction": 1e-06,
+    "loss": 1e-06,
+    "gradient": 1e-06,
+    "parameter": 1e-07
+  },
+  "scope": "9 one-step actual reference train_epoch comparisons, with identical initial weights, order, and dropout RNG",
+  "documented_deviations": {
+    "iterator_rng": {
+      "reference_dataloader_advances_torch_rng": true,
+      "effect": "Whole-run same-seed trajectories differ unless iterator RNG consumption is matched; not a loss/update formula difference."
+    },
+    "tiny_batch": {
+      "reference_retained": 0,
+      "ours_retained": 10
+    },
+    "missing_labels": "Our wrapper removes nonfinite labels before extremes; original lightweight wrapper assumes prefiltered finite data.",
+    "split_filtering": "Our calendar filtering/purge intentionally changes allowed training/validation prediction dates.",
+    "checkpointing": "Original saves only on train threshold; ours also saves last and will retain validation best."
+  }
+}
