@@ -5,17 +5,18 @@ recommended package is [verified_reproduction/](verified_reproduction/README.md)
 containing the completed nine-trial study and matched public-release evaluation.
 The earlier `base_model/` copy remains as historical work. Data, checkpoints, large prediction outputs and environments
 are kept locally and ignored by Git. The two final milestone images are small
-and may be committed with their builder and provenance. No commit or push is performed here.
+are included with their builder, small summary inputs and provenance.
 
 - [verified_reproduction/README.md](verified_reproduction/README.md): canonical verified pipeline, all nine completed models, copied test evaluation and evidence.
 - [milestone_figures/README.md](milestone_figures/README.md): two Computer Modern figures, captions and regeneration.
 - [base_model/README.md](base_model/README.md): training, evaluation, copied runs,
   source provenance, protocol and complete baseline file inventory.
-- [base_model/results/README.md](base_model/results/README.md): refreshed 64/128 results and current 256-run status.
+- [base_model/results/README.md](base_model/results/README.md): historical baseline snapshots; use verified_reproduction for the completed study.
 - [data/README.md](data/README.md): Chinese CSI300/CSI800 data and provenance.
 - [base_model/figures/README.md](base_model/figures/README.md): report figures.
 - `.gitignore`: excludes local environments, caches, data and generated artifacts.
-- `top_k/`: existing empty placeholder; no sparse attention is implemented here.
+- [../top k/README.md](<../top k/README.md>): implemented sparse-attention experiments.
+- [../ranking loss/README.md](<../ranking loss/README.md>): implemented ranking-loss experiments.
 
 ## Setup
 
@@ -66,5 +67,4 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python milestone_figures/make_figures.py
 All six data files are verified identical to the sandbox copies and stored once
 under `data/opensource/`. `data/verified_copy_manifest.json` records their hashes.
 No code or data depend on running the original sandbox. The copied reports and
-run metadata retain historical source paths for provenance. No commit or push
-was performed while preparing this package.
+run metadata retain historical source paths for provenance.

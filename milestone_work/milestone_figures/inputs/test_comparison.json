@@ -1,0 +1,190 @@
+{
+  "complete": true,
+  "protocol_sha256": "1e31f29916a00debfc1f4a6a5253b1b61de51dd3d0dceb703ee9e1f26be77a78",
+  "same_test_index_sha256": "1a60adb7f5e7c45ce4d8d635a46fbe8498a1eaab4001c385437a026206a8dfc2",
+  "test_file_sha256": "d05194f2b8d0a1d94e79a13abc2702e1c16c9d8e514ead3ea1b41d4de07cfd95",
+  "models": [
+    {
+      "label": "authors_opensource_seed0",
+      "kind": "upstream",
+      "seed": 0,
+      "path": "reference/model/csi300_opensource_0.pkl",
+      "loaded_epoch": null,
+      "metrics": {
+        "IC": 0.06541624660987493,
+        "ICIR": 0.4398961373807676,
+        "RankIC": 0.06910311101581165,
+        "RankICIR": 0.45102298096461946
+      },
+      "reference_key_metrics": {
+        "IC": 0.06541624660987493,
+        "ICIR": 0.4398961373807676,
+        "RIC": 0.06910311101581165,
+        "RICIR": 0.45102298096461946
+      },
+      "seconds": 12.222617624793202,
+      "checkpoint_sha256": "581443312928ac27fab1c94482cea9e3e0a250f50948fe17e88d8ab5fa188a59",
+      "test_index_sha256": "1a60adb7f5e7c45ce4d8d635a46fbe8498a1eaab4001c385437a026206a8dfc2",
+      "test_dates": 611,
+      "inference_rows": 183300,
+      "scored_rows": 182995,
+      "undefined_dates": 0,
+      "parameters": 775041
+    },
+    {
+      "label": "ours_threshold_seed0",
+      "kind": "local_threshold",
+      "seed": 0,
+      "path": "runs/controlled/width256-seed0/seed-0/threshold_selected.pt",
+      "epoch": 26,
+      "loaded_epoch": 26,
+      "metrics": {
+        "IC": 0.06000813027993296,
+        "ICIR": 0.37527237668019064,
+        "RankIC": 0.0702050881775275,
+        "RankICIR": 0.43168389999775636
+      },
+      "reference_key_metrics": {
+        "IC": 0.06000813027993296,
+        "ICIR": 0.37527237668019064,
+        "RIC": 0.0702050881775275,
+        "RICIR": 0.43168389999775636
+      },
+      "seconds": 12.236641916912049,
+      "checkpoint_sha256": "74e0dceb821950ac108b8b3f447c186921f8fb67456e11bc8ce40a11e4ca5f08",
+      "test_index_sha256": "1a60adb7f5e7c45ce4d8d635a46fbe8498a1eaab4001c385437a026206a8dfc2",
+      "test_dates": 611,
+      "inference_rows": 183300,
+      "scored_rows": 182995,
+      "undefined_dates": 0,
+      "parameters": 775041
+    },
+    {
+      "label": "ours_threshold_seed1",
+      "kind": "local_threshold",
+      "seed": 1,
+      "path": "runs/controlled/width256-seed1/seed-1/threshold_selected.pt",
+      "epoch": 28,
+      "loaded_epoch": 28,
+      "metrics": {
+        "IC": 0.05549142507150817,
+        "ICIR": 0.4028295841957754,
+        "RankIC": 0.0631947819350335,
+        "RankICIR": 0.4478043166853335
+      },
+      "reference_key_metrics": {
+        "IC": 0.05549142507150817,
+        "ICIR": 0.4028295841957754,
+        "RIC": 0.0631947819350335,
+        "RICIR": 0.4478043166853335
+      },
+      "seconds": 12.215451791882515,
+      "checkpoint_sha256": "0327d486cd19112eaa713fbc36edc7d340803f7d0cd60f15ec0d4df0a3311ebd",
+      "test_index_sha256": "1a60adb7f5e7c45ce4d8d635a46fbe8498a1eaab4001c385437a026206a8dfc2",
+      "test_dates": 611,
+      "inference_rows": 183300,
+      "scored_rows": 182995,
+      "undefined_dates": 0,
+      "parameters": 775041
+    },
+    {
+      "label": "ours_threshold_seed2",
+      "kind": "local_threshold",
+      "seed": 2,
+      "path": "runs/controlled/width256-seed2/seed-2/threshold_selected.pt",
+      "epoch": 27,
+      "loaded_epoch": 27,
+      "metrics": {
+        "IC": 0.06828382263711531,
+        "ICIR": 0.46675714099401194,
+        "RankIC": 0.07090349389749959,
+        "RankICIR": 0.4711635864662269
+      },
+      "reference_key_metrics": {
+        "IC": 0.06828382263711531,
+        "ICIR": 0.46675714099401194,
+        "RIC": 0.07090349389749959,
+        "RICIR": 0.4711635864662269
+      },
+      "seconds": 12.223766708280891,
+      "checkpoint_sha256": "b55734086d2e8b9d232b6f430ff3f9e64a3d2b509eb86f4b669f994a0f5e3bbf",
+      "test_index_sha256": "1a60adb7f5e7c45ce4d8d635a46fbe8498a1eaab4001c385437a026206a8dfc2",
+      "test_dates": 611,
+      "inference_rows": 183300,
+      "scored_rows": 182995,
+      "undefined_dates": 0,
+      "parameters": 775041
+    }
+  ],
+  "upstream_seed0_benchmark_check": {
+    "IC": {
+      "measured": 0.06541624660987493,
+      "reported": 0.0653331944250894,
+      "difference": 8.305218478552034e-05,
+      "within_tolerance": false
+    },
+    "ICIR": {
+      "measured": 0.4398961373807676,
+      "reported": 0.437737673269017,
+      "difference": 0.00215846411175058,
+      "within_tolerance": false
+    },
+    "RankIC": {
+      "measured": 0.06910311101581165,
+      "reported": 0.0689011156505423,
+      "difference": 0.0002019953652693529,
+      "within_tolerance": false
+    },
+    "RankICIR": {
+      "measured": 0.45102298096461946,
+      "reported": 0.448122143526123,
+      "difference": 0.002900837438496451,
+      "within_tolerance": false
+    }
+  },
+  "upstream_seed0_benchmark_reproduced": false,
+  "ours_threshold_three_seed_aggregate": {
+    "IC": {
+      "mean": 0.06126112599618548,
+      "population_std": 0.005297097165293979,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "RankIC": {
+      "mean": 0.06810112133668686,
+      "population_std": 0.0034810024782701743,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "ICIR": {
+      "mean": 0.41495303395665933,
+      "population_std": 0.03831969946791828,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "RankICIR": {
+      "mean": 0.45021726771643894,
+      "population_std": 0.016207573546978354,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "limits": [
+    "Public renewed dataset, not unavailable corrected proprietary paper data",
+    "Only author seed 0 checkpoint is supplied; author five-seed workbook is contextual",
+    "Training still differs in boundary purging, RNG/threads and software",
+    "No portfolio evaluation and no checkpoint/hyperparameter tuning on test outcomes"
+  ]
+}

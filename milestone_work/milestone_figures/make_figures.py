@@ -21,9 +21,8 @@ GRID='#DEDEDE'
 
 
 def load_inputs():
-    base=WORKSPACE/'verified_reproduction'
-    paths={'validation':base/'outputs/sweep/comparison.json',
-           'test':base/'outputs/public_release_test/comparison.json'}
+    paths={'validation':HERE/'inputs/validation_comparison.json',
+           'test':HERE/'inputs/test_comparison.json'}
     values={k:json.loads(p.read_text()) for k,p in paths.items()}
     assert values['validation']['complete'] and values['test']['complete']
     assert len(values['validation']['per_seed'])==9
@@ -90,32 +89,32 @@ def main():
     plt.close(fig)
     output_values['validation']=plotted
     # Figure 2: the matched evaluation of one supplied author model and our
-    # three threshold-selected width-256 models. Workbook seed 0 is contextual.
-    fig,axes=panel_figure('Matched test reproduction',
-                         'CSI300, width 256 with same test dates and eval as original paper')
+    # three threshold-selected width-256 models, sharing one x position.
+    fig,axes=plt.subplots(1,2,figsize=(4.6,3.1),sharey=True)
+    fig.subplots_adjust(left=.16,right=.97,bottom=.12,top=.76,wspace=.20)
+    axes[0].set_ylabel('Correlation',labelpad=6)
+    for ax,metric in zip(axes,['IC','RankIC']):
+        ax.set_title(metric,fontsize=12,pad=8)
     test=values['test']
     reference=next(r for r in test['models'] if r['kind']=='upstream')
     ours=sorted([r for r in test['models'] if r['kind']=='local_threshold'],key=lambda r:r['seed'])
     assert [r['seed'] for r in ours]==[0,1,2]
     plotted=[]
     for ax,metric in zip(axes,['IC','RankIC']):
-        workbook=test['upstream_seed0_benchmark_check'][metric]['reported']
         measured=reference['metrics'][metric]
         y=np.array([r['metrics'][metric] for r in ours])
-        ax.scatter(-.075,workbook,s=42,marker='s',facecolors='white',edgecolors=INK,linewidths=.8,zorder=5)
-        ax.scatter(.075,measured,s=37,marker='D',color='#666D73',zorder=5)
-        ax.scatter(1+np.array([-.075,0,.075]),y,s=32,color=COLORS[256],edgecolors='white',linewidths=.35,zorder=4)
-        ax.plot([.84,1.16],[y.mean(),y.mean()],color=INK,lw=1.5,zorder=5)
-        style_axes(ax,[0,1],['Authors','Ours'],(.045,.08),[.05,.06,.07,.08])
-        ax.set_xlim(-.4,1.4)
-        plotted.append({'metric':metric,'workbook_seed0':workbook,'supplied_checkpoint':measured,
+        ax.plot([-.23,.23],[measured,measured],color='#0072B2',lw=1.6,ls='--',zorder=3)
+        ax.scatter(np.array([-.10,0,.10]),y,s=29,color='#D55E00',edgecolors='white',linewidths=.4,zorder=5)
+        ax.plot([-.23,.23],[y.mean(),y.mean()],color='#D55E00',lw=1.5,zorder=4)
+        style_axes(ax,[],[],(0,.1),[0,.025,.05,.075,.1])
+        ax.set_xlim(-.4,.4)
+        plotted.append({'metric':metric,'supplied_checkpoint':measured,
                         'ours_seed_values':y.tolist(),'ours_mean':float(y.mean())})
-    handles=[Line2D([],[],linestyle='none',marker='s',markerfacecolor='white',markeredgecolor=INK,
-                    markersize=5,label='Workbook'),
-             Line2D([],[],linestyle='none',marker='D',color='#666D73',markersize=5,label='Supplied model'),
-             Line2D([],[],linestyle='none',marker='o',color=COLORS[256],markersize=5,label='Our models'),
-             Line2D([],[],color=INK,lw=1.5,label='Our mean')]
-    fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.54,.85),ncol=4,frameon=False,fontsize=9)
+    handles=[Line2D([],[],color='#0072B2',lw=1.6,ls='--',label="Authors' checkpoint"),
+             Line2D([],[],linestyle='none',marker='o',color='#D55E00',markersize=5,label='Our seeds'),
+             Line2D([],[],color='#D55E00',lw=1.5,label='Our mean')]
+    fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.55,.98),ncol=3,frameon=False,fontsize=12,
+               columnspacing=.6,handlelength=1.0)
     fig.savefig(HERE/'02_matched_test_reproduction.png',dpi=400)
     plt.close(fig)
     output_values['test']=plotted

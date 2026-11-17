@@ -119,6 +119,7 @@ the two milestone figures can be committed; no commit or push was performed.
 | Path | Actual purpose |
 | --- | --- |
 | `README.md` | Recommended workflow, results scope, source/data provenance and inventory. |
+| `reports/COMMAND_VERIFICATION.md` | Fresh-environment README command checks, fixes and platform limits. |
 | `COPY_MANIFEST.json` | Verified copy identities, source/destination checksums and relocation hashes. |
 | `train.py` | Shared dense trainer for all widths, retention, daily metrics and resource records. |
 | `checkpointing.py` | Atomic latest/best-IC/threshold checkpoint saving and tie handling. |

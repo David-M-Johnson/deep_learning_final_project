@@ -6,11 +6,11 @@
   "seed_point_order": "left to right = seeds 0, 1, 2; horizontal line = arithmetic mean",
   "source_files": {
     "validation": {
-      "path": "verified_reproduction/outputs/sweep/comparison.json",
+      "path": "milestone_figures/inputs/validation_comparison.json",
       "sha256": "3c75ef71b453380157dad25b49152dcee16f5b10bb4638d28df759d9e2685a52"
     },
     "test": {
-      "path": "verified_reproduction/outputs/public_release_test/comparison.json",
+      "path": "milestone_figures/inputs/test_comparison.json",
       "sha256": "fa40f94e485867308f264fa80bfcde9db23bba642505c524a39dec07d7dd5895"
     }
   },
@@ -80,7 +80,6 @@
     "test": [
       {
         "metric": "IC",
-        "workbook_seed0": 0.0653331944250894,
         "supplied_checkpoint": 0.06541624660987493,
         "ours_seed_values": [
           0.06000813027993296,
@@ -91,7 +90,6 @@
       },
       {
         "metric": "RankIC",
-        "workbook_seed0": 0.0689011156505423,
         "supplied_checkpoint": 0.06910311101581165,
         "ours_seed_values": [
           0.0702050881775275,

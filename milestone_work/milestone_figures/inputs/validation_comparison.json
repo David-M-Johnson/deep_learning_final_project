@@ -1,0 +1,603 @@
+{
+  "updated_utc": "2026-11-16T08:15:22.187321+00:00",
+  "complete": true,
+  "per_seed": [
+    {
+      "width": 64,
+      "seed": 0,
+      "parameters": 66177,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 3775.951852040831,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.06297298710745271,
+        "ICIR": 0.481583030825413,
+        "RankIC": 0.07355018640223632,
+        "RankICIR": 0.6005433167203638
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 6,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.10721928875318804,
+          "ICIR": 1.0670612980091296,
+          "RankIC": 0.11220785840715149,
+          "RankICIR": 1.0397525555569034
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1353465856,
+      "threads": 2,
+      "cpu_seconds": 7413.175233,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.10721928875318804,
+        "ICIR": 1.0670612980091296,
+        "RankIC": 0.11220785840715149,
+        "RankICIR": 1.0397525555569034
+      }
+    },
+    {
+      "width": 64,
+      "seed": 1,
+      "parameters": 66177,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 3674.908379584085,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.059422801798162034,
+        "ICIR": 0.497655495049924,
+        "RankIC": 0.07425605325010458,
+        "RankICIR": 0.6168284059618699
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 3,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.11204804511537188,
+          "ICIR": 1.1949824836788465,
+          "RankIC": 0.10951202246918168,
+          "RankICIR": 1.0015428182037507
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1363886080,
+      "threads": 2,
+      "cpu_seconds": 7293.379559,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.11204804511537188,
+        "ICIR": 1.1949824836788465,
+        "RankIC": 0.10951202246918168,
+        "RankICIR": 1.0015428182037507
+      }
+    },
+    {
+      "width": 64,
+      "seed": 2,
+      "parameters": 66177,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 3547.4678134997375,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.050503468108742074,
+        "ICIR": 0.3716047422622258,
+        "RankIC": 0.06432481405790422,
+        "RankICIR": 0.4981568824634708
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 5,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.11723184616007094,
+          "ICIR": 1.1718924145737994,
+          "RankIC": 0.1136150898437266,
+          "RankICIR": 1.0501562399240407
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1587429376,
+      "threads": 2,
+      "cpu_seconds": 7088.328044999999,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.11723184616007094,
+        "ICIR": 1.1718924145737994,
+        "RankIC": 0.1136150898437266,
+        "RankICIR": 1.0501562399240407
+      }
+    },
+    {
+      "width": 128,
+      "seed": 0,
+      "parameters": 212353,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 4916.036219375208,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.042922266990803024,
+        "ICIR": 0.42274033729444105,
+        "RankIC": 0.05102513739639948,
+        "RankICIR": 0.5254796971708148
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 6,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.11480284389661966,
+          "ICIR": 1.0371815725501212,
+          "RankIC": 0.11735895731152243,
+          "RankICIR": 0.9911755818292948
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1358692352,
+      "threads": 2,
+      "cpu_seconds": 9645.336527,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.11480284389661966,
+        "ICIR": 1.0371815725501212,
+        "RankIC": 0.11735895731152243,
+        "RankICIR": 0.9911755818292948
+      }
+    },
+    {
+      "width": 128,
+      "seed": 1,
+      "parameters": 212353,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 4805.567306832876,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.07146313147179056,
+        "ICIR": 0.6620018556095979,
+        "RankIC": 0.07597178939942406,
+        "RankICIR": 0.6406873795831186
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 3,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.1115371236965604,
+          "ICIR": 0.9965806533438368,
+          "RankIC": 0.11612296771250355,
+          "RankICIR": 0.9925004816454971
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1602568192,
+      "threads": 2,
+      "cpu_seconds": 9601.718648999999,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.1115371236965604,
+        "ICIR": 0.9965806533438368,
+        "RankIC": 0.11612296771250355,
+        "RankICIR": 0.9925004816454971
+      }
+    },
+    {
+      "width": 128,
+      "seed": 2,
+      "parameters": 212353,
+      "epochs": 40,
+      "stopping_reason": "epoch_limit",
+      "seconds": 4711.112217540853,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.03801296935700379,
+        "ICIR": 0.32724886765249317,
+        "RankIC": 0.04108312718961283,
+        "RankICIR": 0.37492116273505033
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 5,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.10580753422216446,
+          "ICIR": 0.8464863373800399,
+          "RankIC": 0.10443411023466916,
+          "RankICIR": 0.8028806960463675
+        },
+        "threshold_selected_epoch": null,
+        "threshold_selected_metrics": null,
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1567571968,
+      "threads": 2,
+      "cpu_seconds": 9414.01635,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.10580753422216446,
+        "ICIR": 0.8464863373800399,
+        "RankIC": 0.10443411023466916,
+        "RankICIR": 0.8028806960463675
+      }
+    },
+    {
+      "width": 256,
+      "seed": 0,
+      "parameters": 775041,
+      "epochs": 26,
+      "stopping_reason": "reference_train_loss_threshold",
+      "seconds": 4838.922643708065,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.01823910694615831,
+        "ICIR": 0.17106586586882064,
+        "RankIC": 0.03220668724279993,
+        "RankICIR": 0.27527779682369974
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 6,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.08788768229510868,
+          "ICIR": 0.7578661753122027,
+          "RankIC": 0.09408457163128647,
+          "RankICIR": 0.7800066189106779
+        },
+        "threshold_selected_epoch": 26,
+        "threshold_selected_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.01823910694615831,
+          "ICIR": 0.17106586586882064,
+          "RankIC": 0.03220668724279993,
+          "RankICIR": 0.27527779682369974
+        },
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1433518080,
+      "threads": 2,
+      "cpu_seconds": 9575.658074,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.08788768229510868,
+        "ICIR": 0.7578661753122027,
+        "RankIC": 0.09408457163128647,
+        "RankICIR": 0.7800066189106779
+      }
+    },
+    {
+      "width": 256,
+      "seed": 1,
+      "parameters": 775041,
+      "epochs": 28,
+      "stopping_reason": "reference_train_loss_threshold",
+      "seconds": 5152.410411332734,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.058929429178514736,
+        "ICIR": 0.565320328899498,
+        "RankIC": 0.0690630361681637,
+        "RankICIR": 0.5757501165385195
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 3,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.1201017649959981,
+          "ICIR": 1.1157345294248693,
+          "RankIC": 0.11663989453141026,
+          "RankICIR": 1.0394823745142496
+        },
+        "threshold_selected_epoch": 28,
+        "threshold_selected_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.058929429178514736,
+          "ICIR": 0.565320328899498,
+          "RankIC": 0.0690630361681637,
+          "RankICIR": 0.5757501165385195
+        },
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1585872896,
+      "threads": 2,
+      "cpu_seconds": 10296.613695,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.1201017649959981,
+        "ICIR": 1.1157345294248693,
+        "RankIC": 0.11663989453141026,
+        "RankICIR": 1.0394823745142496
+      }
+    },
+    {
+      "width": 256,
+      "seed": 2,
+      "parameters": 775041,
+      "epochs": 27,
+      "stopping_reason": "reference_train_loss_threshold",
+      "seconds": 4716.567338791676,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.030338704957942556,
+        "ICIR": 0.3243792155494474,
+        "RankIC": 0.04214213440920251,
+        "RankICIR": 0.442446967736367
+      },
+      "checkpoint_selection": {
+        "selection_metric": "validation IC",
+        "tie_rule": "earliest epoch (strict improvement)",
+        "best_validation_epoch": 5,
+        "best_validation_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.10053932919453148,
+          "ICIR": 0.8977803221298561,
+          "RankIC": 0.09998500518348076,
+          "RankICIR": 0.8650791723948353
+        },
+        "threshold_selected_epoch": 27,
+        "threshold_selected_metrics": {
+          "dates": 54,
+          "undefined_dates": 0,
+          "IC": 0.030338704957942556,
+          "ICIR": 0.3243792155494474,
+          "RankIC": 0.04214213440920251,
+          "RankICIR": 0.442446967736367
+        },
+        "baseline_stopping_unchanged": true,
+        "note": "Validation selection is supplemental and optimistic on validation; no test-set selection."
+      },
+      "peak_host_rss_bytes": 1596915712,
+      "threads": 2,
+      "cpu_seconds": 9428.372369,
+      "best_validation": {
+        "dates": 54,
+        "undefined_dates": 0,
+        "IC": 0.10053932919453148,
+        "ICIR": 0.8977803221298561,
+        "RankIC": 0.09998500518348076,
+        "RankICIR": 0.8650791723948353
+      }
+    }
+  ],
+  "aggregates": [
+    {
+      "width": 64,
+      "checkpoint": "latest",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.05763308567145227,
+          "population_std": 0.005245603802261796,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.07071035123674838,
+          "population_std": 0.0045244429342944596,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 0.4502810893791876,
+          "population_std": 0.05601819182678394,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 0.5718428683819015,
+          "population_std": 0.05252630720873324,
+          "seeds": 3
+        }
+      }
+    },
+    {
+      "width": 64,
+      "checkpoint": "best_validation_IC",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.11216639334287695,
+          "population_std": 0.004088465986467022,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.11177832357335325,
+          "population_std": 0.001702383740543105,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 1.1446453987539251,
+          "population_std": 0.05566421554944675,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 1.0304838712282316,
+          "population_std": 0.020900519526670724,
+          "seeds": 3
+        }
+      }
+    },
+    {
+      "width": 128,
+      "checkpoint": "latest",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.05079945593986579,
+          "population_std": 0.014748240927441857,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.056026684661812126,
+          "population_std": 0.01467574629524725,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 0.47066368685217735,
+          "population_std": 0.14080098558172363,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 0.5136960798296613,
+          "population_std": 0.10881807672338778,
+          "seeds": 3
+        }
+      }
+    },
+    {
+      "width": 128,
+      "checkpoint": "best_validation_IC",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.11071583393844817,
+          "population_std": 0.0037179552341685363,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.11263867841956504,
+          "population_std": 0.005823408045562043,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 0.960082854424666,
+          "population_std": 0.08201721434593809,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 0.9288522531737198,
+          "population_std": 0.08907698447110447,
+          "seeds": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "checkpoint": "latest",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.035835747027538535,
+          "population_std": 0.017060454946638652,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.047803952606722044,
+          "population_std": 0.015570051445073719,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 0.353588470105922,
+          "population_std": 0.16227349510155303,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 0.43115829369952874,
+          "population_std": 0.12292675149544328,
+          "seeds": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "checkpoint": "best_validation_IC",
+      "completed_seeds": 3,
+      "required_seeds": 3,
+      "metrics": {
+        "IC": {
+          "mean": 0.10284292549521276,
+          "population_std": 0.013251835042798666,
+          "seeds": 3
+        },
+        "RankIC": {
+          "mean": 0.10356982378205916,
+          "population_std": 0.00955070123326894,
+          "seeds": 3
+        },
+        "ICIR": {
+          "mean": 0.9237936756223094,
+          "population_std": 0.147252528306013,
+          "seeds": 3
+        },
+        "RankICIR": {
+          "mean": 0.8948560552732543,
+          "population_std": 0.10800282095691584,
+          "seeds": 3
+        }
+      }
+    }
+  ],
+  "note": "Validation only. Best IC selects each checkpoint; these are not test scores. Parallel wall times are contention-dependent; CPU seconds and peak process RSS are also recorded."
+}
