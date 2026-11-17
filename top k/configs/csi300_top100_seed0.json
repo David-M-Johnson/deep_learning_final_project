@@ -1,0 +1,11 @@
+{
+  "mode": "topk",
+  "k": 100,
+  "width": 256,
+  "epochs": 40,
+  "seed": 0,
+  "device": "cpu",
+  "stop_loss": 0.95,
+  "evaluate_test": true,
+  "output": "runs/new_top100_seed0"
+}

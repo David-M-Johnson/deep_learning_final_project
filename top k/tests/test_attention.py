@@ -74,3 +74,17 @@ def test_supplied_checkpoint_loads_without_key_changes():
     model.load_state_dict(torch.load(checkpoint, map_location='cpu', weights_only=True), strict=True)
     with torch.no_grad():
         assert torch.isfinite(model(torch.randn(60, 8, 221))).all()
+
+
+def test_top100_selects_100_sources_and_backpropagates():
+    layer = SAttention(64, 2, 0, attention_mode='topk', k=100)
+    logits = torch.randn(8, 120, 120, requires_grad=True)
+    weights = layer.attention_weights(logits)
+    assert torch.all((weights > 0).sum(-1) == 100)
+    torch.testing.assert_close(weights.sum(-1), torch.ones(8, 120))
+    # A weighted sum, not the constant row sum, exercises the softmax gradients.
+    loss = (weights * torch.randn_like(weights)).sum()
+    loss.backward()
+    assert torch.isfinite(logits.grad).all()
+    assert torch.all(logits.grad[weights.detach() == 0] == 0)
+    assert torch.any(logits.grad != 0)

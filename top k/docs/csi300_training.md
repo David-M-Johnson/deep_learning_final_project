@@ -94,3 +94,12 @@ See `results.csv` and the ignored `runs/` folders. Historical manifests, command
 and source snapshots inside run artifacts are preserved as executed and may refer
 to their pre-reorganization paths. They have not been rewritten. These results
 do not establish improvement over a matched dense baseline.
+
+## Completed top-100 follow-up
+
+Top-100 finished at epoch 25, threshold-selected MSE 0.9494520359, training/validation
+time 4250.56 seconds, seed 0, width 256. Test IC 0.06114871, RankIC 0.06686590,
+ICIR 0.38580055, RankICIR 0.41528091 over 611 dates. It used the same data hash,
+chronological boundaries and filtering as earlier top-k runs. See `results.csv`.
+This follow-up was motivated by prior test observations: label it exploratory and
+verify with more seeds/controls before making an improvement claim.

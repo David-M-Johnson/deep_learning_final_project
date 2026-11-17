@@ -116,7 +116,7 @@ Datasets and full checkpoints remain excluded from Git.
 | [pytest.ini](pytest.ini) | Discovery/import paths for top-k and ranking-loss tests. |
 
 After installing the experiment requirements, run both experiment correctness suites
-from the repository root with `.venv/bin/python -m pytest -q` (24 tests).
+from the repository root with `.venv/bin/python -m pytest -q` (25 tests).
 This command does not run the separate milestone reproduction checks; see their README.
 
 ## References
