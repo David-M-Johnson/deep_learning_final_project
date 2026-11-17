@@ -1,0 +1,11 @@
+{
+  "dataset": "CSI300 opensource",
+  "attention_mode": "dense",
+  "width": 256,
+  "seed": 0,
+  "ranking_weight": 0,
+  "epochs": 40,
+  "stop_mse": 0.95,
+  "checkpoint_selection": "MSE threshold then last",
+  "test_during_development": false
+}

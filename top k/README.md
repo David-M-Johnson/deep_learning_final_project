@@ -7,10 +7,46 @@ is still performed, so no computational efficiency gain is claimed.
 
 ## Completed results
 
-See [results.csv](results.csv): seed-0 CSI300 open-source runs at width 256.
-Top-10: test IC 0.04958, RankIC 0.05737 (32 epochs).
-Top-50: test IC 0.05571, RankIC 0.06533 (26 epochs).
-These are single-seed results, not evidence of improvement over a matched dense baseline.
+All rows below are **single-seed (seed 0), width-256 CSI300 open-source results**.
+The top-k model keeps all eligible stocks in each date batch and masks source
+connections; self is eligible but not forced. Test predictions cover **611 trading
+dates, July 1, 2020 through December 30, 2022**.
+
+| Model | Epochs | Final training MSE | Test IC ↑ | Test RankIC ↑ | Test ICIR ↑ | Test RankICIR ↑ | Train + validation (min) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Dense MASTER (MSE control) | 26 | 0.9490 | 0.05433 | 0.06513 | 0.32735 | 0.39045 | 60.3 |
+| Top-10 | 32 | 0.9489 | 0.04958 | 0.05737 | 0.33977 | 0.39397 | 81.4 |
+| Top-50 | 26 | 0.9486 | 0.05571 | 0.06533 | 0.36204 | 0.42705 | 66.1 |
+
+The dense row is the separately trained **MSE-only control** from the ranking-loss
+experiment, reusing the same dense MASTER, dataset processing, evaluation and seed.
+All three runs use eight-day inputs, 158 stock and 63 market features, four temporal
+heads, two stock heads, dropout 0.5, beta 5 and Adam with learning rate 1e-5.
+The first epoch reaching mean training MSE <= 0.95 is selected, with a maximum of
+40 epochs; validation is diagnostic, not used to select the checkpoint.
+The runs share the same chronological splits and five-date boundary purges.
+See [the training protocol](docs/csi300_training.md) for details and the published
+validation-processing caveat. The two top-k summaries are also in
+[results.csv](results.csv); that file does not include the later dense control.
+
+**Interpretation:** top-10 had lower test IC and RankIC than dense MASTER, but
+slightly higher ICIR and RankICIR. Top-50 was numerically higher on all four, but
+its RankIC advantage was
+only **0.00021** (0.06533 versus 0.06513). These single-seed results do **not**
+establish a reliable improvement. Multiple seeds, random-neighbor controls and
+uncertainty analysis remain necessary. The test period has already been inspected,
+so further development must disclose exploratory reuse rather than treat it as a
+new untouched holdout.
+
+The durations above are measured wall times for each complete training/validation
+run, not comparable fixed-epoch speed tests: stopping epochs and machine conditions
+differ. This implementation computes dense scores before masking, and **no speed
+or memory improvement is claimed**. No portfolio backtest has been run.
+
+Checkpoints, dated test predictions, daily metrics, manifests and logs are retained
+locally under each experiment's ignored `runs/` directory; they are not uploaded
+with this README. The authors' five-seed open-source averages are a separate
+reference, not a replacement for the matched local dense comparison above.
 
 ## Commands
 

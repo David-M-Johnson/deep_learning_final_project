@@ -95,6 +95,30 @@ repository root:
 milestone_work/.venv/bin/python milestone_work/milestone_figures/make_figures.py
 ```
 
+## Candidate ranking-loss experiment
+
+The separate [ranking loss/](<ranking loss/README.md>) folder contains dense MASTER
+with a pairwise logistic ranking term, its matched MSE-only control, configurations,
+correctness tests and completed single-seed results. Both used width 256 and stopped
+at epoch 26. Ranking loss produced test IC 0.05427 and RankIC 0.06529; the matched
+control produced 0.05433 and 0.06513. No meaningful gain has been established.
+These experiments have their own documented protocol and are not the separate
+three-seed verified milestone reproduction described above.
+
+The top-k README also records its results against this local dense control.
+Datasets and full checkpoints remain excluded from Git.
+
+| Added path | Purpose |
+| --- | --- |
+| [ranking loss/](<ranking loss/README.md>) | Ranking-loss implementation, configurations, file inventory, setup and results. |
+| [ranking loss/results.csv](<ranking loss/results.csv>) | Exact matched single-seed comparison. |
+| [ranking loss/epoch_metrics.csv](<ranking loss/epoch_metrics.csv>) | Per-epoch training and diagnostic-validation history. |
+| [pytest.ini](pytest.ini) | Discovery/import paths for top-k and ranking-loss tests. |
+
+After installing the experiment requirements, run both experiment correctness suites
+from the repository root with `.venv/bin/python -m pytest -q` (24 tests).
+This command does not run the separate milestone reproduction checks; see their README.
+
 ## References
 
 - Tong Li et al. *MASTER: Market-Guided Stock Transformer for Stock Price Forecasting*. AAAI 2024, 38(1), 162–170. [Local paper](original_paper/original_paper.pdf); [arXiv:2312.15235](https://arxiv.org/abs/2312.15235).
