@@ -57,6 +57,24 @@ See [results.csv](results.csv) for exact values and [epoch_metrics.csv](epoch_me
 for the training/diagnostic-validation history. Additional seeds and uncertainty
 analysis remain necessary. No portfolio evaluation was performed.
 
+## Trained checkpoints on GitHub
+
+Download the [CSI300 seed-0 checkpoint release](https://github.com/David-M-Johnson/deep_learning_final_project/releases/tag/csi300-seed0-checkpoints-v1). It includes the original
+full selected checkpoint for top-10, top-50, top-100, ranking-loss dense MASTER
+and its dense MSE control. Each `*-training.pt` file is about 9 MB and contains
+model weights, optimizer state, epoch, configuration, RNG state and data manifest.
+`training-manifest.json` records file sizes and SHA256 checksums. No datasets are
+included, and release files are not downloaded automatically by `git pull`.
+
+Keep the project code and use the matching feature ordering/preprocessing. These
+trusted project checkpoints include historical Python metadata, so load them using
+`torch.load(path, map_location="cpu", weights_only=False)`. The model weights are
+under `model_state_dict`, and training settings are under `config`. Load those
+weights into the corresponding MASTER architecture and call `model.eval()` for
+prediction. Historical local paths in metadata do not need to match your machine.
+The runner does not yet implement an automatic training-resume command.
+
+
 ## Setup and checks
 
 For a fresh clone on macOS/Linux (Python 3.11):
@@ -121,8 +139,8 @@ Additional seeds and a separate holdout/walk-forward study are needed for strong
 ## Current status and file inventory
 
 Both full runs completed successfully. Small result summaries and histories are
-committed; large checkpoints, per-stock predictions, logs, and source snapshots
-remain local in ignored `runs/paired_seed0/`. They are not part of a fresh clone.
+committed; per-stock predictions, logs, source snapshots, and intermediate checkpoints
+remain local in ignored `runs/paired_seed0/`. They are not part of a fresh clone; selected checkpoints are downloadable from the linked release.
 For full training, download the authors' open-source CSI300 sampler files and put
 `csi300_dl_{train,valid,test}.pkl` in repository-root `data/opensource/`.
 Use `--data-dir` with the individual training CLI for another location.

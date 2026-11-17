@@ -119,6 +119,15 @@ After installing the experiment requirements, run both experiment correctness su
 from the repository root with `.venv/bin/python -m pytest -q` (25 tests).
 This command does not run the separate milestone reproduction checks; see their README.
 
+## Download trained models
+
+The original full selected checkpoints for top-10, top-50, top-100, ranking loss
+and its dense MSE control are attached to the [CSI300 seed-0 release](https://github.com/David-M-Johnson/deep_learning_final_project/releases/tag/csi300-seed0-checkpoints-v1).
+Each `*-training.pt` file is about 9 MB and includes weights, optimizer state and
+training metadata. The release includes a checksum manifest and loading instructions.
+Datasets remain separate; checkpoints are not downloaded automatically by `git pull`.
+
+
 ## References
 
 - Tong Li et al. *MASTER: Market-Guided Stock Transformer for Stock Price Forecasting*. AAAI 2024, 38(1), 162–170. [Local paper](original_paper/original_paper.pdf); [arXiv:2312.15235](https://arxiv.org/abs/2312.15235).

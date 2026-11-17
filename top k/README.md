@@ -45,8 +45,7 @@ differ. This implementation computes dense scores before masking, and **no speed
 or memory improvement is claimed**. No portfolio backtest has been run.
 
 Checkpoints, dated test predictions, daily metrics, manifests and logs are retained
-locally under each experiment's ignored `runs/` directory; they are not uploaded
-with this README. The authors' five-seed open-source averages are a separate
+locally under each experiment's ignored `runs/` directory; the full selected checkpoints are also attached to the GitHub Release linked above. The authors' five-seed open-source averages are a separate
 reference, not a replacement for the matched local dense comparison above.
 
 ## Completed top-100 run and reproduction
@@ -80,6 +79,24 @@ Our implementation does not adopt that paper's memory-optimized chunking method.
 MASTER's main paper includes an LSH clustering comparison; neither its main paper
 nor supplied supplement reports an explicit top-k stock-attention experiment.
 This observation does not establish that the original authors never considered it.
+
+## Trained checkpoints on GitHub
+
+Download the [CSI300 seed-0 checkpoint release](https://github.com/David-M-Johnson/deep_learning_final_project/releases/tag/csi300-seed0-checkpoints-v1). It includes the original
+full selected checkpoint for top-10, top-50, top-100, ranking-loss dense MASTER
+and its dense MSE control. Each `*-training.pt` file is about 9 MB and contains
+model weights, optimizer state, epoch, configuration, RNG state and data manifest.
+`training-manifest.json` records file sizes and SHA256 checksums. No datasets are
+included, and release files are not downloaded automatically by `git pull`.
+
+Keep the project code and use the matching feature ordering/preprocessing. These
+trusted project checkpoints include historical Python metadata, so load them using
+`torch.load(path, map_location="cpu", weights_only=False)`. The model weights are
+under `model_state_dict`, and training settings are under `config`. Load those
+weights into the corresponding MASTER architecture and call `model.eval()` for
+prediction. Historical local paths in metadata do not need to match your machine.
+The runner does not yet implement an automatic training-resume command.
+
 
 ## Commands
 
@@ -116,7 +133,7 @@ Full training additionally requires the authors' CSI300 open-source pickles:
 Obtain them from the [upstream dataset links](https://github.com/SJTU-DMTai/MASTER#dataset)
 and place them in the shared repository-root `data/opensource/` directory.
 Default data paths point there; use `--data-dir` for a different location.
-The full checkpoints and predictions from our runs are local, not included in GitHub;
+Final selected checkpoints are available in the linked GitHub Release; prediction files remain local;
 `results.csv` contains their summary. See the protocol for exact split/filtering choices.
 Install dependencies with `../.venv/bin/python -m pip install -r requirements-data.txt`.
 The original checkout stays at `../original_paper/MASTER/` and was not changed.
